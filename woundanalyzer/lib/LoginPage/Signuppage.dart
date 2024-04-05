@@ -2,6 +2,7 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:woundanalyzer/HomePage/HomePage.dart';
 import 'package:woundanalyzer/LoginPage/Loginpage.dart';
 import 'package:woundanalyzer/const.dart';
 
@@ -188,23 +189,21 @@ class _SignupPageState extends State<SignupPage> {
               width: double.infinity,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor:
-                      Color(kbluepastle), // Set text color to white
-                  padding: EdgeInsets.symmetric(
-                      horizontal: 20, vertical: 10), // Adjust padding as needed
+                  backgroundColor: Color(kbluepastle),
+                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   shape: RoundedRectangleBorder(
-                    borderRadius:
-                        BorderRadius.circular(8), // Set button border radius
+                    borderRadius: BorderRadius.circular(8),
                   ),
                 ),
                 onPressed: () {
-                  // Add sign-in functionality here
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => HomePage()),
+                  );
                 },
                 child: Text(
                   'Sign Up',
-                  style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.white), // Adjust text size as needed
+                  style: TextStyle(fontSize: 16, color: Colors.white),
                 ),
               ),
             ),

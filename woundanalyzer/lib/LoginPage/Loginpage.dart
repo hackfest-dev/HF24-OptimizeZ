@@ -109,6 +109,7 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:woundanalyzer/HomePage/HomePage.dart';
 import 'package:woundanalyzer/LoginPage/Loginpage.dart';
 import 'package:woundanalyzer/LoginPage/Signuppage.dart';
 import 'package:woundanalyzer/const.dart';
@@ -296,7 +297,12 @@ class _LandingPageState extends State<LoginPage> {
                     borderRadius: BorderRadius.circular(8),
                   ),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => HomePage()),
+                  );
+                },
                 child: Text(
                   'Log In',
                   style: TextStyle(fontSize: 16, color: Colors.white),
