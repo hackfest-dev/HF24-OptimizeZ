@@ -61,15 +61,16 @@ class SliverSearchAppBar extends SliverPersistentHeaderDelegate {
             child: Padding(
               padding: const EdgeInsets.fromLTRB(8.0, 50, 8, 8),
               child: AnimatedTextKit(
+                repeatForever: true,
                 animatedTexts: [
                   TypewriterAnimatedText(
                     "WoundAnalyzer",
-                    //speed: Duration(seconds: 1),
+                    speed: Duration(milliseconds: 100),
                     textStyle: TextStyle(
                         fontSize: 22.0,
                         fontWeight: FontWeight.w900,
                         color: Colors.grey.shade600),
-                  )
+                  ),
                 ],
               ),
             ),
