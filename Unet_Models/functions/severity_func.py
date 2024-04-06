@@ -1,9 +1,9 @@
-def predict_severity(area, wound_type):
+def severityCheck(area, wound_type):
 
 
   severity_weights = {
       "bone": 4,
-      "granulation": 3,
+      "granulating": 3,
       "slough": 2,
       "eschar": 1
   }
@@ -17,7 +17,7 @@ def predict_severity(area, wound_type):
       "low": 0
   }
 
- 
+
   if weighted_area >= severity_thresholds["high"]:
     return "high"  
   elif weighted_area >= severity_thresholds["medium"]:

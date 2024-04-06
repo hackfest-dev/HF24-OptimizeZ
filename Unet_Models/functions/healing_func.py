@@ -1,7 +1,7 @@
-def predict_healing_time(wound_type):
+def predictHealingTime(wound_type):
 
   healing_times = {
-      "granulation": 14,
+      "granulating": 14,
       "bone": 30,
       "eschar": 10,
       "slough": 20
@@ -15,3 +15,4 @@ def predict_healing_time(wound_type):
   
 
   return predicted_time
+

@@ -39,23 +39,13 @@ def geoParams(image_path):
     woundColorIsolation = resized_array * preds_test_t
     plt.figure(figsize=(15, 5))
 
-    # Plot the first image
-    plt.subplot(1, 3, 1)
-    plt.imshow(resized_array.squeeze(), cmap='gray')  # Assuming X_test[var] is grayscale
-    plt.title('Original Image')
-    plt.axis('off')
-    plt.savefig("wi1.png", bbox_inches='tight', pad_inches=0)
-    image = cv2.imread("wi1.png")
-    cv2.imwrite(os.path.join(output_directory,"original.png"), image)
 
     # Plot the second image (woundIsolation overlay)
     plt.subplot(1, 3, 2)
     plt.imshow(woundIsolation.squeeze(), cmap='gray')  # Assuming woundIsolation is grayscale
     plt.title('Wound Isolation Overlay')
     plt.axis('off')
-    plt.savefig("wi2.png", bbox_inches='tight', pad_inches=0)
-    image = cv2.imread("wi2.png")
-    cv2.imwrite(os.path.join(output_directory,"woundIsolation.png"), image)
+    
 
     # Plot the third image (woundColorIsolation overlay)
     plt.subplot(1, 3, 3)
@@ -109,5 +99,5 @@ def geoParams(image_path):
     
     return h, w, area, perimeter
 
-geoParams("Unet_Models/functions/leg1.jpg")
+
 
