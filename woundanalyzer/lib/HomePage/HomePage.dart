@@ -1,12 +1,11 @@
-import 'dart:io';
-
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:woundanalyzer/HomePage/AccountDetailspage.dart';
 import 'package:woundanalyzer/HomePage/Components/Appbar.dart';
 import 'package:woundanalyzer/HomePage/Components/Bottomnavabar.dart';
 import 'package:woundanalyzer/const.dart';
+
+import 'SelectedImageScreen.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -16,15 +15,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int _selectedIndex = 0; // Define selectedIndex here
-
   final List<Widget> _screens = [HomeScreen(), AccountDetailsPage()];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index; // Update _selectedIndex when tab is tapped
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,8 +35,6 @@ class HomeScreen extends StatelessWidget {
     final ImagePicker _picker = ImagePicker();
     final XFile? image = await _picker.pickImage(source: source);
     if (image != null) {
-      // Handle the selected image here
-      // For example, you can display the selected image in a new widget
       Navigator.push(
         context,
         MaterialPageRoute(
@@ -145,28 +134,6 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class SelectedImageScreen extends StatelessWidget {
-  final String imagePath;
-
-  const SelectedImageScreen({Key? key, required this.imagePath})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Selected Image'),
-      ),
-      body: Center(
-        child: Image.file(
-          File(imagePath),
-          fit: BoxFit.cover,
-        ),
       ),
     );
   }

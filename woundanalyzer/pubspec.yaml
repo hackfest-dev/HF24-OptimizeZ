@@ -39,6 +39,10 @@ dependencies:
   animated_text_kit: ^4.2.2
   persistent_bottom_nav_bar: ^5.0.2
   image_picker: ^1.0.7
+  scanning_effect: ^1.0.4
+  camera: ^0.10.5+9
+  opencv_4: ^1.0.0
+  ar_flutter_plugin: ^0.7.3
 
 dev_dependencies:
   flutter_test:

@@ -263,7 +263,7 @@ class _LandingPageState extends State<LoginPage> {
               ),
               height: 50,
               child: TextField(
-                obscureText: true, // Hide password text
+                obscureText: true,
                 decoration: InputDecoration(
                   hintText: 'Password',
                   border: InputBorder.none,
