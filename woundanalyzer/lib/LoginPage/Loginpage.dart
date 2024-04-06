@@ -188,6 +188,7 @@ class _LandingPageState extends State<LoginPage> {
                           width: 2,
                         ),
                         AnimatedTextKit(
+                          repeatForever: true,
                           animatedTexts: [
                             TypewriterAnimatedText(
                               "WoundAnalyzer",
@@ -263,7 +264,7 @@ class _LandingPageState extends State<LoginPage> {
               ),
               height: 50,
               child: TextField(
-                obscureText: true, // Hide password text
+                obscureText: true,
                 decoration: InputDecoration(
                   hintText: 'Password',
                   border: InputBorder.none,

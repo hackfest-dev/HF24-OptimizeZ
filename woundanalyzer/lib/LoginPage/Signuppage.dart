@@ -80,6 +80,7 @@ class _SignupPageState extends State<SignupPage> {
                           width: 2,
                         ),
                         AnimatedTextKit(
+                          repeatForever: true,
                           animatedTexts: [
                             TypewriterAnimatedText(
                               "WoundAnalyzer",
