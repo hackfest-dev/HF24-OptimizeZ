@@ -5,13 +5,8 @@ class AccountDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Account Details'),
-      ),
-      body: Center(
-        child: Text('This is the Account Details Page'),
-      ),
+    return Center(
+      child: Text('This is the Account Details Page'),
     );
   }
 }
