@@ -39,7 +39,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   Future<void> uploadImage(String imageFile) async {
-    var uri = Uri.parse('http://192.168.137.163:5000/op_image');
+    var uri = Uri.parse('http://${ip}:5000/op_image');
     var request = http.MultipartRequest('POST', uri);
 
     request.files.add(
