@@ -59,8 +59,32 @@ class SliverSearchAppBar extends SliverPersistentHeaderDelegate {
           //  top: topPadding + offset,
           child: Column(
             children: [
-              Row(
-                children: [Container(height: 5, width: 5, color: Colors.amber)],
+              Padding(
+                padding: const EdgeInsets.fromLTRB(8, 15, 15, 15),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Container(
+                      child: Row(
+                        children: [
+                          Container(
+                              height: 20,
+                              width: 30,
+                              child: Image.asset("lib/assets/coin.png")),
+                          Text(
+                            coinval.toString(),
+                          )
+                        ],
+                      ),
+                      height: 25,
+                      width: 55,
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(15),
+                          border: Border.all(color: Colors.black)),
+                    )
+                  ],
+                ),
               ),
               Row(
                 children: [
