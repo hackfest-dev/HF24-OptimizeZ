@@ -30,10 +30,18 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key? key}) : super(key: key);
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   Future<void> uploadImage(String imageFile) async {
     var uri = Uri.parse('http://192.168.137.163:5000/op_image');
     var request = http.MultipartRequest('POST', uri);
+
     request.files.add(
       await http.MultipartFile.fromPath('file', imageFile),
     );
@@ -46,8 +54,6 @@ class HomeScreen extends StatelessWidget {
     }
   }
 
-  const HomeScreen({Key? key}) : super(key: key);
-
   Future<void> _pickImage(BuildContext context, ImageSource source) async {
     final ImagePicker _picker = ImagePicker();
     final XFile? image = await _picker.pickImage(source: source);
@@ -59,6 +65,9 @@ class HomeScreen extends StatelessWidget {
           builder: (context) => SelectedImageScreen(imagePath: image.path),
         ),
       );
+      setState(() {
+        coinval--;
+      });
     }
   }
 
