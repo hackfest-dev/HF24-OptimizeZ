@@ -17,7 +17,7 @@ class BottomNavBar extends StatelessWidget {
       screens: [
         HomeScreen(),
         HistoryPage(),
-        AccountDetailsPage(),
+        AccountDetailsScreen(),
       ],
       items: [
         PersistentBottomNavBarItem(

@@ -15,7 +15,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final List<Widget> _screens = [HomeScreen(), AccountDetailsPage()];
+  final List<Widget> _screens = [HomeScreen(), AccountDetailsScreen()];
 
   @override
   Widget build(BuildContext context) {
