@@ -78,13 +78,25 @@ class _SelectedImageScreenState extends State<SelectedImageScreen> {
                   ),
                 ),
                 ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color(kbluepastle),
+                      elevation: 3,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 20.0, vertical: 20.0),
+                    ),
                     onPressed: () {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context) => ImageScreen()));
                     },
-                    child: Text("Show Result"))
+                    child: Text(
+                      "Show Result",
+                      style: TextStyle(color: Colors.white),
+                    ))
               ]),
         ));
   }

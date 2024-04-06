@@ -54,7 +54,7 @@ class _ImageScreenState extends State<ImageScreen> {
         iconTheme: IconThemeData(color: Colors.white),
         backgroundColor: Color(kbluepastle),
         title: Text(
-          'Selected Image',
+          'Result Screens',
           style: TextStyle(color: Colors.white),
         ),
       ),

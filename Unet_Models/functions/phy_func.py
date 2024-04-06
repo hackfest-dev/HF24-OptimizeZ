@@ -35,4 +35,4 @@ def phyParams(image_path):
     
     
     
-phyParams("Unet_Models/functions/leg1.jpg")
+#phyParams("Unet_Models/functions/leg1.jpg")
