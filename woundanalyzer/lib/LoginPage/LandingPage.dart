@@ -80,6 +80,7 @@ class _LandingPageState extends State<LandingPage> {
                           width: 2,
                         ),
                         AnimatedTextKit(
+                          repeatForever: true,
                           animatedTexts: [
                             TypewriterAnimatedText(
                               "WoundAnalyzer",

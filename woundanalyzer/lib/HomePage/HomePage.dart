@@ -1,10 +1,12 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:woundanalyzer/HomePage/AccountDetailspage.dart';
 import 'package:woundanalyzer/HomePage/Components/Appbar.dart';
 import 'package:woundanalyzer/HomePage/Components/Bottomnavabar.dart';
 import 'package:woundanalyzer/const.dart';
-
+import 'package:http/http.dart' as http;
 import 'SelectedImageScreen.dart';
 
 class HomePage extends StatefulWidget {
@@ -29,12 +31,28 @@ class _HomePageState extends State<HomePage> {
 }
 
 class HomeScreen extends StatelessWidget {
+  Future<void> uploadImage(String imageFile) async {
+    var uri = Uri.parse('http://192.168.137.163:5000/op_image');
+    var request = http.MultipartRequest('POST', uri);
+    request.files.add(
+      await http.MultipartFile.fromPath('file', imageFile),
+    );
+
+    var response = await request.send();
+    if (response.statusCode == 200) {
+      print('Image uploaded successfully');
+    } else {
+      print('Failed to upload image. Status code: ${response.statusCode}');
+    }
+  }
+
   const HomeScreen({Key? key}) : super(key: key);
 
   Future<void> _pickImage(BuildContext context, ImageSource source) async {
     final ImagePicker _picker = ImagePicker();
     final XFile? image = await _picker.pickImage(source: source);
     if (image != null) {
+      uploadImage(image.path);
       Navigator.push(
         context,
         MaterialPageRoute(

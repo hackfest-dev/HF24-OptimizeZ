@@ -188,6 +188,7 @@ class _LandingPageState extends State<LoginPage> {
                           width: 2,
                         ),
                         AnimatedTextKit(
+                          repeatForever: true,
                           animatedTexts: [
                             TypewriterAnimatedText(
                               "WoundAnalyzer",

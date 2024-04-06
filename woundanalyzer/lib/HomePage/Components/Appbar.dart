@@ -57,23 +57,32 @@ class SliverSearchAppBar extends SliverPersistentHeaderDelegate {
         ),
         Positioned(
           //  top: topPadding + offset,
-          child: Center(
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(8.0, 50, 8, 8),
-              child: AnimatedTextKit(
-                repeatForever: true,
-                animatedTexts: [
-                  TypewriterAnimatedText(
-                    "WoundAnalyzer",
-                    speed: Duration(milliseconds: 100),
-                    textStyle: TextStyle(
-                        fontSize: 22.0,
-                        fontWeight: FontWeight.w900,
-                        color: Colors.grey.shade600),
+          child: Column(
+            children: [
+              Row(
+                children: [Container(height: 5, width: 5, color: Colors.amber)],
+              ),
+              Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(8.0, 50, 8, 8),
+                    child: AnimatedTextKit(
+                      repeatForever: true,
+                      animatedTexts: [
+                        TypewriterAnimatedText(
+                          "WoundAnalyzer",
+                          speed: Duration(milliseconds: 100),
+                          textStyle: TextStyle(
+                              fontSize: 22.0,
+                              fontWeight: FontWeight.w900,
+                              color: Colors.grey.shade600),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
-            ),
+            ],
           ),
           left: 16,
           right: 16,
