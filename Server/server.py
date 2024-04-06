@@ -1,37 +1,26 @@
-from flask import Flask, request, render_template, send_from_directory
+from flask import Flask, jsonify
 import os
+import base64
 
 app = Flask(__name__)
 
-UPLOAD_FOLDER = 'Image'
-OP_UPLOAD_FOLDER = 'Op_Image'
+RES_IMAGE_FOLDER = 'resimage'
+app.config['RES_IMAGE_FOLDER'] = RES_IMAGE_FOLDER
 
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-app.config['OP_UPLOAD_FOLDER'] = OP_UPLOAD_FOLDER
+def convert_images_to_json():
+    image_data = {}
+    res_image_path = app.config['RES_IMAGE_FOLDER']
+    for filename in os.listdir(res_image_path):
+        if filename.endswith(('.jpg', '.jpeg', '.png')):
+            with open(os.path.join(res_image_path, filename), "rb") as img_file:
+                encoded_string = base64.b64encode(img_file.read()).decode('utf-8')
+                image_data[filename] = encoded_string
+    return image_data
 
-@app.route('/get_img', methods=['GET', 'POST'])
-def upload_image():
-    if request.method == 'POST':
-        if 'file' not in request.files:
-            return 'No file part'
-        file = request.files['file']
-        if file.filename == '':
-            return 'No selected file'
-        if file:
-            if not os.path.exists(app.config['UPLOAD_FOLDER']):
-                os.makedirs(app.config['UPLOAD_FOLDER'])
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], 'wound_ana.jpg'))
-            return 'File successfully uploaded'
-    return render_template('index.html')
-
-@app.route('/op_image', methods=['GET', 'POST'])  # Allow POST requests for /op_image
-def op_image():
-    if request.method == 'GET':
-        op_image_path = os.path.join(app.config['OP_UPLOAD_FOLDER'], 'Op_wound.jpg')
-        return send_from_directory(app.config['OP_UPLOAD_FOLDER'], 'Op_wound.jpg')
-    elif request.method == 'POST':
-        # Handle POST request for /op_image if needed
-        return 'POST request handled for /op_image'
+@app.route('/getres')
+def get_res_images():
+    image_data = convert_images_to_json()
+    return jsonify(image_data)
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)

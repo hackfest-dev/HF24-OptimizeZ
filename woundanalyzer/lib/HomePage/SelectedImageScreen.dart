@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:scanning_effect/scanning_effect.dart';
 import 'package:woundanalyzer/const.dart';
 
+import '../ResultScreen.dart';
+
 class SelectedImageScreen extends StatefulWidget {
   final String imagePath;
 
@@ -75,6 +77,14 @@ class _SelectedImageScreenState extends State<SelectedImageScreen> {
                     ),
                   ),
                 ),
+                ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ImageScreen()));
+                    },
+                    child: Text("Show Result"))
               ]),
         ));
   }
