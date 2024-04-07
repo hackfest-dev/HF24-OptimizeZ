@@ -12,7 +12,7 @@ import matplotlib.image as mpimg
 from keras.models import load_model
 
 def geoParams(image_path):
-    model = load_model('C:/flutter-proj/HackFest/HF24-OptimizeZ/Server/woundSegmentation_model.h5')
+    model = load_model('C:/Users/Muthu/Desktop/Hackfest/OptimizeZ/HF24-OptimizeZ/Server/woundSegmentation_model.h5')
     IMG_WIDTH = 128
     IMG_HEIGHT = 128
     IMG_CHANNELS = 3

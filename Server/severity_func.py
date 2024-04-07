@@ -7,14 +7,14 @@ def severityCheck(area, wound_type):
       "slough": 2,
       "eschar": 1
   }
-
+  area=area/100
   
   weighted_area = area * severity_weights[wound_type]
 
   severity_thresholds = {
-      "high": 50,  
-      "medium": 25,  
-      "low": 0
+      "high": 100,  
+      "medium": 50,  
+      "low": 25
   }
 
 

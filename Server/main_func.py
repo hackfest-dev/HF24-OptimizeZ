@@ -5,7 +5,7 @@ from severity_func import severityCheck
 import json
 import os
 
-def main():
+def main_mod():
     image_path = "Image/wound_ana.jpg"
     h, w, area, perimeter = geoParams(image_path)
     woundType = phyParams(image_path)
@@ -23,7 +23,7 @@ def main():
     }
     
     # Specify the output directory
-    output_directory = "Server/output"
+    output_directory = "output"
     # Create the output directory if it doesn't exist
     if not os.path.exists(output_directory):
         os.makedirs(output_directory)

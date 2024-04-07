@@ -11,17 +11,33 @@ class ImageScreen extends StatefulWidget {
 
 class _ImageScreenState extends State<ImageScreen> {
   List<Container> imageContainers = [];
+  Map<String, dynamic> woundData = {};
 
   @override
   void initState() {
     super.initState();
     fetchImages();
+    fetchWoundData();
   }
 
-  Future<void> fetchImages() async {
+
+
+Future<void> fetchWoundData() async {
+  try {
+    final response = await http.get(Uri.parse('http://192.168.137.26:5000/get_output_json'));
+    if (response.statusCode == 200) {
+      woundData = json.decode(response.body);
+      setState(() {});
+    } else {
+      print('Failed to fetch wound data: ${response.statusCode}');
+    }
+  } catch (e) {
+    print('Error fetching wound data: $e');
+  }
+} Future<void> fetchImages() async {
     try {
       final response =
-          await http.get(Uri.parse('http://192.168.137.163:5000/getres'));
+          await http.get(Uri.parse('http://192.168.137.26:5000/getres'));
       if (response.statusCode == 200) {
         final Map<String, dynamic> data = json.decode(response.body);
         data.forEach((key, value) {
@@ -30,7 +46,6 @@ class _ImageScreenState extends State<ImageScreen> {
             fit: BoxFit.fill,
           );
           var container = Container(
-            //  color: Colors.amber,
             margin: EdgeInsets.all(10),
             height: 200,
             width: 200,
@@ -60,10 +75,10 @@ class _ImageScreenState extends State<ImageScreen> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(15.0),
-        child: Column(
+        child: ListView(
           children: [
             Container(
-              height: 400,
+              height: 500,
               child: GridView.builder(
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2),
@@ -74,22 +89,20 @@ class _ImageScreenState extends State<ImageScreen> {
               ),
             ),
             Card(
-              child: Center(
-                child: Container(
-                  height: 200,
-                  width: 200,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text("Wound Area"),
-                      Text("Wound height"),
-                      Text("Wound Width"),
-                      Text("Wound Type"),
-                      Text("Sevarity"),
-                      Text("Estimated Healing Time:")
-                    ],
-                  ),
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text("Wound Data", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                    SizedBox(height: 10),
+                    Text("Area: ${woundData['area'] ?? ''}mm square"),
+                    Text("Height: ${woundData['h'] ?? ''}mm"),
+                    Text("Width: ${woundData['w'] ?? ''}mm"),
+                    Text("Type: ${woundData['woundType'] ?? ''}"),
+                    Text("Severity: ${woundData['severity'] ?? ''}"),
+                    Text("Estimated Healing Time: ${woundData['healingTime'] ?? ''}Days"),
+                  ],
                 ),
               ),
             )
