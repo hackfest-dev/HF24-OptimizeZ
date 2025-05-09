@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:woundanalyzer/HomePage/AccountDetailspage.dart';
+import 'package:woundanalyzer/HomePage/BloodGlucoseScreen.dart';
 import 'package:woundanalyzer/HomePage/HistoryPage.dart';
 import 'package:woundanalyzer/HomePage/HomePage.dart';
 import 'package:woundanalyzer/const.dart';
@@ -17,6 +18,7 @@ class BottomNavBar extends StatelessWidget {
       screens: [
         HomeScreen(),
         HistoryPage(),
+        BloodGlucoseScreen(),
         AccountDetailsScreen(),
       ],
       items: [
@@ -29,6 +31,12 @@ class BottomNavBar extends StatelessWidget {
         PersistentBottomNavBarItem(
           icon: Icon(Icons.history),
           title: 'History',
+          activeColorPrimary: Colors.white,
+          inactiveColorPrimary: Colors.white,
+        ),
+        PersistentBottomNavBarItem(
+          icon: Icon(Icons.medical_information),
+          title: 'BloodGlucose',
           activeColorPrimary: Colors.white,
           inactiveColorPrimary: Colors.white,
         ),

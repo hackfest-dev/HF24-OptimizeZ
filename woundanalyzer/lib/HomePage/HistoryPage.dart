@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:woundanalyzer/HomePage/CompareScreen.dart';
 import 'package:woundanalyzer/const.dart';
 
 class HistoryPage extends StatelessWidget {
@@ -96,7 +97,7 @@ class historycard extends StatelessWidget {
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Color(kbluepastle),
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8),
                   ),
@@ -106,6 +107,11 @@ class historycard extends StatelessWidget {
                   //   context,
                   //   MaterialPageRoute(builder: (context) => HomePage()),
                   // );
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => SelectImageScreen()),
+                  );
                 },
                 child: Text(
                   'Compare',
